@@ -77,6 +77,14 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
+      },
+      {
+        test: /\.(md|swf)(\?.*)?$/,
+        loader: 'file',
+        options: {
+          limit: 10000,
+          name: utils.assetsPath('files/[name].[hash:7].[ext]')
+        }
       }
     ]
   },
