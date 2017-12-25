@@ -2,20 +2,42 @@
 // Template version: 1.2.7
 // see http://vuejs-templates.github.io/webpack for documentation.
 
-const path = require('path')
+const path = require('path');
+
+const cdnPath = '//static.seeyouyima.com/mp.meiyou.com/';
+const mpTestApi = 'https://test-mp.meiyou.com/';
+const ssoTestApi = 'https://test-sso.meiyou.com/sso/';
 
 module.exports = {
   dev: {
-
+    env: {
+      NODE_ENV: '"development"',
+      DEBUG_MODE: true
+    },
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/sso-api': {
+        target: ssoTestApi,
+        changeOrigin: true,
+        pathRewrite: {
+          '^/sso-api': ''
+        }
+      },
+      '/mp-api': {
+        target: mpTestApi,
+        changeOrigin: true,
+        pathRewrite: {
+          '^/mp-api': ''
+        }
+      }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
     port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
-    autoOpenBrowser: false,
+    autoOpenBrowser: true,
     errorOverlay: true,
     notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
@@ -49,19 +71,23 @@ module.exports = {
   },
 
   build: {
+    env: {
+      NODE_ENV: '"production"',
+      DEBUG_MODE: false
+    },
     // Template for index.html
     index: path.resolve(__dirname, '../dist/index.html'),
 
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
-    assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsSubDirectory: '',
+    // 配置CDN服务器地址
+    assetsPublicPath: cdnPath,
 
     /**
      * Source Maps
      */
-
-    productionSourceMap: true,
+    productionSourceMap: false,
     // https://webpack.js.org/configuration/devtool/#production
     devtool: '#source-map',
 
@@ -78,4 +104,4 @@ module.exports = {
     // Set to `true` or `false` to always turn it on or off
     bundleAnalyzerReport: process.env.npm_config_report
   }
-}
+};
