@@ -1,6 +1,20 @@
-/*
-* @Author: Xun.Fu
-* @Date:   2017-12-25 16:12:07
-* @Last Modified by:   Xun.Fu
-* @Last Modified time: 2017-12-25 16:12:08
-*/
+import Vue from 'vue';
+import Vuex from 'vuex';
+import createLogger from 'vuex/dist/logger';
+import * as actions from './actions';
+import * as getters from './getters';
+import state from './state';
+import mutations from './mutations';
+
+Vue.use(Vuex);
+
+const debug = process.env.NODE_ENV !== 'production';
+
+export default new Vuex.Store({
+  actions,
+  getters,
+  state,
+  mutations,
+  strict: debug,
+  plugins: debug ? [createLogger()] : []
+});

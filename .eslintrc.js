@@ -62,6 +62,7 @@ module.exports = {
     'no-param-reassign': 0,
     'comma-dangle': 0,
     'no-plusplus': 0,
+    'no-console': 0,
     'no-restricted-properties': 0,
     'no-mixed-operators': 0,
     'prefer-template': 0,
