@@ -8,15 +8,32 @@ import 'assets/css/index.scss';
 
 import App from './App';
 import router from './router';
+import store from './store/index';
+import * as filter from './filter/index';
 
 Vue.use(Element);
 
 Vue.config.productionTip = false;
+Vue.config.devtools = process.env.DEBUG_MODE;
+
+// 注册全局自定义过滤器
+Object.keys(filter).forEach(v => {
+  Vue.filter(v, filter[v]);
+});
+
+// 注册一个全局自定义指令 v-focus
+Vue.directive('focus', {
+  // 当绑定元素插入到 DOM 中。
+  inserted: el => {
+    // 聚焦元素
+    el.focus();
+  }
+});
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
-  template: '<App/>',
-  components: { App },
+  store,
+  render: h => h(App)
 });

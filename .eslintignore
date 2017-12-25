@@ -3,6 +3,6 @@
 /dist/*.js
 /*.js
 static/*
-src/assets/javascripts/*.js
+src/assets/js/*.js
 node_modules/*.*
 src/test/*
