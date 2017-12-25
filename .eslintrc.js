@@ -8,6 +8,10 @@ module.exports = {
   },
   env: {
     browser: true,
+    node: true
+  },
+  parserOptions: {
+    ecmaVersion: 6
   },
   extends: 'airbnb-base',
   // required to lint *.vue files
@@ -39,6 +43,24 @@ module.exports = {
         'e' // for e.returnvalue
       ]
     }],
+    // allow paren-less arrow functions
+    'arrow-parens': ['error', 'as-needed'],
+    'arrow-body-style': ['error', 'as-needed'],
+    'arrow-spacing': [2, {
+      'before': true,
+      'after': true
+    }],
+    // allow async-await
+    'generator-star-spacing': 0,
+    'global-require': 0,
+    'import/no-dynamic-require': 0,
+    'import/no-extraneous-dependencies': ['error', {
+      'devDependencies': true,
+      'optionalDependencies': true,
+      'peerDependencies': false
+    }],
+    'no-param-reassign': 0,
+    'comma-dangle': 0,
     // allow optionalDependencies
     'import/no-extraneous-dependencies': ['error', {
       optionalDependencies: ['test/unit/index.js']

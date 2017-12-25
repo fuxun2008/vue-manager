@@ -1,0 +1,276 @@
+@import 'reset';
+@import 'iconfont';
+
+.container {
+  width: 1200px;
+  margin: 40px auto 0;
+  background-color: #fff;
+  min-height: 1412px;
+  _height: 1412px;
+  overflow: hidden;
+}
+
+.forgot-container {
+  min-height: 700px;
+  _height: 700px;
+}
+
+.menu {
+  width: 210px;
+  margin-bottom: -10000px;
+  padding-bottom: 10000px;
+  float: left;
+  border-right: 1px solid rgba(231, 231, 231, 0.7);
+  box-sizing: border-box;
+}
+
+.wrap {
+  float: left;
+  width: 990px;
+  margin-bottom: -10000px;
+  padding-bottom: 10000px;
+}
+
+.sns-login {
+  height: 40px;
+  height: 80px;
+}
+
+.sns {
+  display: inline-block;
+  width: 25%;
+  float: left;
+  text-align: center;
+  cursor: pointer;
+}
+
+.sns-img {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  margin: 0 auto;
+  vertical-align: middle;
+}
+
+.mobile-login {
+  background: url("../images/icon_mobile.png") no-repeat center center;
+  background-size: 50px 50px;
+}
+
+.meiyou-login {
+  background: url("../images/icon_meiyou.png") no-repeat center center;
+  background-size: 30px 30px;
+}
+
+.weibo-login {
+  background: url("../images/icon_weibo.png") no-repeat center center;
+  background-size: 50px 50px;
+}
+
+.qq-login {
+  background: url("../images/icon_qq.png") no-repeat center center;
+  background-size: 50px 50px;
+}
+
+.weixin-login {
+  background: url("../images/icon_weixin.png") no-repeat center center;
+  background-size: 50px 50px;
+}
+
+.tips {
+  font-size: 12px;
+  color: #999;
+  line-height: 22px;
+  text-align: left;
+
+  button {
+    padding: 0;
+    font-size: 12px;
+  }
+
+  .tips-link {
+    font-size: 12px;
+    color: #2e90fe;
+    letter-spacing: 0;
+    z-index: 10;
+
+    &:hover {
+      color: #ff74b9;
+    }
+
+  }
+
+}
+
+.register-steps {
+  width: 100%;
+  padding: 40px 0 0;
+  text-align: center;
+
+  .el-steps {
+    margin-left: 120px;
+  }
+
+}
+
+.register-form {
+  padding: 40px 0 130px 70px;
+}
+
+.center-wrap {
+  width: 650px;
+  margin: 0 auto;
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.center-title {
+  font-size: 16px;
+  color: #ff74b9;
+  line-height: 24px;
+
+  p {
+    color: #323232;
+
+    span {
+      color: #ff74b9;
+    }
+
+  }
+
+}
+
+.center-form {
+  width: 540px;
+  margin-left: 25px;
+  padding-top: 40px;
+  padding-bottom: 10px;
+}
+
+.center-bottom {
+  width: 650px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 30px 0 50px;
+}
+
+.line-1 {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -webkit-text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.news-title {
+  height: 60px;
+  line-height: 60px;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.news-title__tips {
+  display: inline-block;
+  padding: 0 16px;
+  color: #ff74b9;
+  font-size: 16px;
+  height: 100%;
+  border-bottom: 3px solid #ff74b9;
+}
+
+.news-title__warn {
+  display: inline-block;
+  margin-left: 20px;
+  color: #ff74b9;
+}
+
+.el-dialog--small {
+  width: 675px !important;
+}
+
+.news-wrap {
+  padding: 0 40px 60px;
+}
+
+.forgot-wrap {
+  position: relative;
+  text-align: left;
+  padding: 20px 40px;
+}
+
+.forgot-steps {
+  width: 650px;
+  padding: 25px 0 0;
+  margin: 0 auto;
+  text-align: center;
+
+  .el-steps {
+    margin-left: 120px;
+  }
+
+}
+
+.forgot-mobile__body {
+  width: 480px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.forgot-form {
+  text-align: left;
+}
+
+.forgot-name {
+  margin-top: 40px;
+}
+
+.forgot-next {
+  margin-top: 20px;
+}
+
+.forgot-mt {
+  margin-top: 40px;
+}
+
+.forgot-paragra {
+  font-size: 16px;
+  color: #323232;
+  line-height: 32px;
+}
+
+.forgot-email {
+  line-height: 64px;
+}
+
+.forgot-link {
+  color: #2e9ce9;
+}
+
+.help-link {
+  color: #65ABEC;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+}
+
+.index-table__head {
+  height: 44px;
+  background-color: #f7f7f7;
+  border-top: 1px solid #e7e7e7;
+  border-bottom: 1px solid #e7e7e7;
+
+  span {
+    display: inline-block;
+    padding: 11px 18px;
+    color: #999;
+  }
+
+}
+
+.index-table__item,
+.index-nodata {
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.float-none {
+  float: none;
+}

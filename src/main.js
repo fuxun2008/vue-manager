@@ -1,8 +1,15 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
+import Element from 'element-ui';
+import 'es6-promise/auto';
+import 'assets/js/polyfill';
+import 'assets/css/index.scss';
+
 import App from './App';
 import router from './router';
+
+Vue.use(Element);
 
 Vue.config.productionTip = false;
 
