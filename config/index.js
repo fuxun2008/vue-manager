@@ -105,3 +105,6 @@ module.exports = {
     bundleAnalyzerReport: process.env.npm_config_report
   }
 };
+
+exports.cdnPath = cdnPath;
+exports.mpTestApi = mpTestApi;
