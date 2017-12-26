@@ -27,6 +27,26 @@ const router = new Router({
       auth: false
     }
   }, {
+    path: '/403',
+    name: 'error-403',
+    component: resolve => {
+      require(['pages/error-page/403'], resolve);
+    },
+    meta: {
+      title: '403-权限不足',
+      auth: false
+    }
+  }, {
+    path: '/500',
+    name: 'error-500',
+    component: resolve => {
+      require(['pages/error-page/500'], resolve);
+    },
+    meta: {
+      title: '500-服务端错误',
+      auth: false
+    }
+  }, {
     path: '/404',
     name: 'error-404',
     component: resolve => {
