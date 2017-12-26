@@ -18,7 +18,7 @@
   --color-info: #ff74b9;
   --color-blue: #2e90fe;
   --color-blue-light: #5da9ff;
-  --color-blue-lighter: rgba(var(--color-blue), 0.12);
+  --color-blue-lighter: rgba(#2e90fe, 0.12);
   --color-blue-dark: #1d8ce0;
   --color-white: #fff;
   --color-black: #000;
@@ -44,7 +44,7 @@
   --border-radius-base: 4px;
   --border-radius-small: 2px;
   --border-radius-circle: 100%;
-  --shadow-base: 0 0 2px rgba(var(--color-black), 0.18), 0 0 1px var(--color-blue-light);
+  --shadow-base: 0 0 2px rgba(#000, 0.18), 0 0 1px var(--color-blue-light);
 
   /* Box-shadow
   -------------------------- */
@@ -284,22 +284,22 @@
   --cascader-menu-border-width: var(--border-width-base);
   --cascader-menu-color: var(--font-color-base);
   --cascader-menu-option-color-active: var(--color-blue);
-  --cascader-menu-option-fill-active: rgba(var(--color-blue), 0.12);
+  --cascader-menu-option-fill-active: rgba(#2e90fe, 0.12);
   --cascader-menu-option-color-hover: var(--font-color-base);
-  --cascader-menu-option-fill-hover: rgba(var(--color-black), 0.06);
+  --cascader-menu-option-fill-hover: rgba(#000, 0.06);
   --cascader-menu-option-color-disabled: #999;
-  --cascader-menu-option-fill-disabled: rgba(var(--color-black), 0.06);
+  --cascader-menu-option-fill-disabled: rgba(#000, 0.06);
   --cascader-menu-option-empty-color: #666;
   --cascader-menu-group-color: #999;
-  --cascader-menu-shadow: 0 1px 2px rgba(var(--color-black), 0.14), 0 0 3px rgba(var(--color-black), 0.14);
+  --cascader-menu-shadow: 0 1px 2px rgba(#000, 0.14), 0 0 3px rgba(#000, 0.14);
   --cascader-menu-option-pinyin-color: #999;
-  --cascader-menu-submenu-shadow: 1px 1px 2px rgba(var(--color-black), 0.14), 1px 0 2px rgba(var(--color-black), 0.14);
+  --cascader-menu-submenu-shadow: 1px 1px 2px rgba(#000, 0.14), 1px 0 2px rgba(#000, 0.14);
 
   /* Group
   -------------------------- */
   --group-option-flex: 0 0 (1/5) * 100%;
   --group-option-offset-bottom: 12px;
-  --group-option-fill-hover: rgba(var(--color-black), 0.06);
+  --group-option-fill-hover: rgba(#000, 0.06);
   --group-title-color: var(--color-black);
   --group-title-font-size: var(--font-size-base);
   --group-title-width: 66px;
@@ -312,8 +312,8 @@
   --tab-header-color-hover: var(--font-color-base);
   --tab-header-color: var(--font-color-base);
   --tab-header-border-card: var(--color-border);
-  --tab-header-fill-active: rgba(var(--color-black), 0.06);
-  --tab-header-fill-hover: rgba(var(--color-black), 0.06);
+  --tab-header-fill-active: rgba(#000, 0.06);
+  --tab-header-fill-hover: rgba(#000, 0.06);
   --tab-vertical-header-width: 90px;
   --tab-vertical-header-count-color: var(--color-white);
   --tab-vertical-header-count-fill: var(--color-blue);
