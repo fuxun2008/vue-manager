@@ -28,9 +28,9 @@ const router = new Router({
     }
   }, {
     path: '/404',
-    name: 'notFound',
+    name: 'error-404',
     component: resolve => {
-      require(['pages/404'], resolve);
+      require(['pages/error-page/404'], resolve);
     },
     meta: {
       title: '404-页面不存在',
