@@ -1,9 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-const HelloWorld = r => require.ensure([], () => r(require('components/HelloWorld')), 'helloWorld');
-const Err404 = r => require.ensure([], () => r(require('pages/404')), '404');
-
 Vue.use(Router);
 
 const router = new Router({
@@ -12,17 +9,31 @@ const router = new Router({
   routes: [{
     path: '/',
     name: 'HelloWorld',
-    component: HelloWorld,
+    component: resolve => {
+      require(['components/HelloWorld'], resolve);
+    },
     meta: {
       title: '欢迎页面-美柚后台',
       auth: false
     }
   }, {
+    path: '/login',
+    name: 'login',
+    component: resolve => {
+      require(['pages/login'], resolve);
+    },
+    meta: {
+      title: '登录-美柚后台',
+      auth: false
+    }
+  }, {
     path: '/404',
     name: 'notFound',
-    component: Err404,
+    component: resolve => {
+      require(['pages/404'], resolve);
+    },
     meta: {
-      title: '404-美柚后台',
+      title: '404-页面不存在',
       auth: false
     }
   }, {

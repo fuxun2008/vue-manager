@@ -5,6 +5,7 @@ import Element from 'element-ui';
 import 'es6-promise/auto';
 import 'assets/js/polyfill';
 import 'assets/css/index.scss';
+import 'theme/index.css';
 
 import App from './App';
 import router from './router';
