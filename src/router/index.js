@@ -7,20 +7,30 @@ const router = new Router({
   mode: 'history',
   base: '/', // 如果整个单页应用服务在 /app/ 下，然后 base 就应该设为 "/app/"
   routes: [{
-    path: '/',
-    name: 'HelloWorld',
-    component: resolve => {
-      require(['components/HelloWorld'], resolve);
-    },
-    meta: {
-      title: '欢迎页面-美柚后台',
-      auth: false
-    }
-  }, {
+  //   path: '/',
+  //   name: 'HelloWorld',
+  //   component: resolve => {
+  //     require(['components/HelloWorld'], resolve);
+  //   },
+  //   meta: {
+  //     title: '欢迎页面-美柚后台',
+  //     auth: false
+  //   }
+  // }, {
     path: '/login',
     name: 'login',
     component: resolve => {
       require(['pages/login'], resolve);
+    },
+    meta: {
+      title: '登录-美柚后台',
+      auth: false
+    }
+  }, {
+    path: '/locking',
+    name: 'locking',
+    component: resolve => {
+      require(['components/lockscreen/lockscreen'], resolve);
     },
     meta: {
       title: '登录-美柚后台',
