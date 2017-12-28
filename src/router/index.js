@@ -1,99 +1,63 @@
 import Vue from 'vue';
-import Router from 'vue-router';
+import VueRouter from 'vue-router';
+import Cookies from 'js-cookie';
+import Util from 'util/util';
+import { routers, otherRouter, appRouter } from './router';
 
-Vue.use(Router);
+Vue.use(VueRouter);
 
-const router = new Router({
+// 路由配置
+const RouterConfig = {
   mode: 'history',
-  base: '/', // 如果整个单页应用服务在 /app/ 下，然后 base 就应该设为 "/app/"
-  routes: [{
-  //   path: '/',
-  //   name: 'HelloWorld',
-  //   component: resolve => {
-  //     require(['components/HelloWorld'], resolve);
-  //   },
-  //   meta: {
-  //     title: '欢迎页面-美柚后台',
-  //     auth: false
-  //   }
-  // }, {
-    path: '/login',
-    name: 'login',
-    component: resolve => {
-      require(['pages/login'], resolve);
-    },
-    meta: {
-      title: '登录-美柚后台',
-      auth: false
-    }
-  }, {
-    path: '/locking',
-    name: 'locking',
-    component: resolve => {
-      require(['components/lockscreen/lockscreen'], resolve);
-    },
-    meta: {
-      title: '登录-美柚后台',
-      auth: false
-    }
-  }, {
-    path: '/403',
-    name: 'error-403',
-    component: resolve => {
-      require(['pages/error-page/403'], resolve);
-    },
-    meta: {
-      title: '403-权限不足',
-      auth: false
-    }
-  }, {
-    path: '/500',
-    name: 'error-500',
-    component: resolve => {
-      require(['pages/error-page/500'], resolve);
-    },
-    meta: {
-      title: '500-服务端错误',
-      auth: false
-    }
-  }, {
-    path: '/404',
-    name: 'error-404',
-    component: resolve => {
-      require(['pages/error-page/404'], resolve);
-    },
-    meta: {
-      title: '404-页面不存在',
-      auth: false
-    }
-  }, {
-    path: '*',
-    name: 'error',
-    redirect: '/404'
-  }],
-  scrollBehavior() {
-    return { y: 0 };
-  }
-});
+  base: '/',
+  routes: routers
+};
+
+const router = new VueRouter(RouterConfig);
 
 // 登录中间验证，页面跳转之前都会判断这个登录与否
 router.beforeEach((to, from, next) => {
-  const path = to.path;
-  const { auth = false } = to.meta;
-
-  if (auth && path !== '/login') {
-    return false;
+  Util.title(to.meta.title);
+  if (Cookies.get('locking') === '1' && to.name !== 'locking') { // 判断当前是否是锁定状态
+    next({
+      replace: true,
+      name: 'locking'
+    });
+  } else if (Cookies.get('locking') === '0' && to.name === 'locking') {
+    next(false);
   }
 
-  return next();
+  if (!Cookies.get('user') && to.name !== 'login') { // 判断是否已经登录且前往的页面不是登录页
+    next({
+      name: 'login'
+    });
+  } else if (Cookies.get('user') && to.name === 'login') { // 判断是否已经登录且前往的是登录页
+    Util.title();
+    next({
+      name: 'home_index'
+    });
+  } else {
+    const curRouterObj = Util.getRouterObjByName([otherRouter, ...appRouter], to.name);
+    if (curRouterObj && curRouterObj.access !== undefined) { // 需要判断权限的路由
+      if (curRouterObj.access === parseInt(Cookies.get('access'), 10)) {
+        Util.toDefaultPage([otherRouter, ...appRouter], to.name, router, next); // 如果在地址栏输入的是一级菜单则默认打开其第一个二级菜单的页面
+      } else {
+        next({
+          replace: true,
+          name: 'error-403'
+        });
+      }
+    } else { // 没有配置权限的路由, 直接通过
+      Util.toDefaultPage([...routers], to.name, router, next);
+    }
+  }
 });
 
 // 页面跳转之后，修改页面的title
-router.afterEach(transition => {
-  const title = transition.meta.title;
-  if (title) {
-    document.title = title;
-  }
+router.afterEach(to => {
+  Util.openNewPage(router.app, to.name, to.params, to.query);
+  // iView.LoadingBar.finish();
+  window.scrollTo(0, 0);
 });
 
 export default router;

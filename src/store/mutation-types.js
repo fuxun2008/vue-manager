@@ -1,3 +1,25 @@
 export const SET_AVATAR = 'SET_AVATAR';
 
-export const SET_FAVORITE_LIST = 'SET_FAVORITE_LIST';
+export const SET_OPENED_LIST = 'SET_OPENED_LIST';
+
+export const PAGE_OPENED_LIST = 'PAGE_OPENED_LIST';
+
+export const INCREATE_TAG = 'INCREATE_TAG';
+
+export const SET_TAGS_LIST = 'SET_TAGS_LIST';
+
+export const INIT_CACHE_PAGE = 'INIT_CACHE_PAGE';
+
+export const UPDATE_MENU_LIST = 'UPDATE_MENU_LIST';
+
+export const SET_CURRENT_PATH = 'SET_CURRENT_PATH';
+
+export const ADD_OPEN_SUBMENU = 'ADD_OPEN_SUBMENU';
+
+export const CLEAR_OPENED_SUBMENU = 'CLEAR_OPENED_SUBMENU';
+
+export const SET_MESSAGE_COUNT = 'SET_MESSAGE_COUNT';
+
+export const SET_CURRENT_PAGE_NAME = 'SET_CURRENT_PAGE_NAME';
+
+export const LOGOUT = 'LOGOUT';

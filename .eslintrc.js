@@ -69,6 +69,9 @@ module.exports = {
     'no-restricted-properties': 0,
     'no-mixed-operators': 0,
     'prefer-template': 0,
+    'object-shorthand': 0,
+    'max-len': 0,
+    'no-restricted-syntax': 0,
     // allow optionalDependencies
     'import/no-extraneous-dependencies': ['error', {
       optionalDependencies: ['test/unit/index.js']

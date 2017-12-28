@@ -8,9 +8,11 @@ import 'assets/css/index.scss';
 import 'theme/index.css';
 
 import App from './App';
-import router from './router';
+import router from './router/index';
+import { appRouter } from './router/router';
 import store from './store';
 import * as filters from './filters';
+import * as types from './store/mutation-types';
 
 Vue.use(Element);
 
@@ -34,7 +36,32 @@ Vue.directive('focus', {
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  router,
-  store,
-  render: h => h(App)
+  router: router,
+  store: store,
+  render: h => h(App),
+  data: {
+    currentPageName: ''
+  },
+  mounted() {
+    this.currentPageName = this.$route.name;
+    // 显示打开的页面的列表
+    this.$store.commit(types.SET_OPENED_LIST);
+    this.$store.commit(types.INIT_CACHE_PAGE);
+    // 权限菜单过滤相关
+    this.$store.commit(types.UPDATE_MENU_LIST);
+    // iview-admin检查更新
+    // util.checkUpdate(this);
+  },
+  created() {
+    const tagsList = [];
+    appRouter.map(item => {
+      if (item.children.length <= 1) {
+        tagsList.push(item.children[0]);
+      } else {
+        tagsList.push(...item.children);
+      }
+      return true;
+    });
+    this.$store.commit(types.SET_TAGS_LIST, tagsList);
+  }
 });
