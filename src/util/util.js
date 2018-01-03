@@ -2,59 +2,6 @@ import * as types from '../store/mutation-types';
 
 const util = {};
 
-const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
-
-export const shuffle = arr => {
-  const arrTmp = arr.slice();
-  for (let i = 0; i < arrTmp.length; i++) {
-    const j = getRandomInt(0, i);
-    const t = arrTmp[i];
-    arrTmp[i] = arrTmp[j];
-    arrTmp[j] = t;
-  }
-  return arrTmp;
-};
-
-util.debounce = (func, delay) => {
-  let timer;
-
-  return (...args) => {
-    if (timer) {
-      clearTimeout(timer);
-    }
-    timer = setTimeout(() => {
-      func.apply(this, args);
-    }, delay);
-  };
-};
-
-/**
- * 过去距离当前时间差
- * @param  {int} ms 毫秒数
- * @return {string}    时间差标示
- */
-util.dateFromNow = ms => {
-  const time = parseFloat(ms) / 1000;
-  let result = '';
-  if (time) {
-    if (time > 60 && time < 3600) {
-      result = `${parseInt(time / 60.0, 10)}分钟前`;
-    } else if (time >= 3600 && time < 24 * 3600) {
-      result = `${parseInt(time / 3600.0, 10)}小时前`;
-    } else if (time >= 24 * 3600 && time < 30 * 24 * 3600) {
-      result = `${parseInt(time / 3600.0 / 24.0, 10)}天前`;
-    } else if (time >= 30 * 24 * 3600 && time < 12 * 30 * 24 * 3600) {
-      result = `${parseInt(time / 3600.0 / 24.0 / 30, 10)}月前`;
-    } else if (time >= 12 * 30 * 24 * 3600) {
-      result = `${parseInt(time / 3600.0 / 24.0 / 30.0 / 12.0, 10)}年前`;
-    } else {
-      result = `${parseInt(time / 1.0, 10)}秒前`;
-    }
-  }
-
-  return result;
-};
-
 util.title = title => {
   title = title || 'iView admin';
   window.document.title = title;

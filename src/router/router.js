@@ -2,7 +2,7 @@
 * @Author: Xun.Fu
 * @Date:   2017-12-27 17:18:29
 * @Last Modified by:   Xun.Fu
-* @Last Modified time: 2017-12-27 19:43:39
+* @Last Modified time: 2017-12-28 15:55:51
 */
 
 import Main from 'pages/main';
@@ -100,6 +100,22 @@ export const appRouter = [{
     name: 'access_index',
     component: resolve => {
       require(['pages/access/access'], resolve);
+    }
+  }]
+}, {
+  path: '/access-test',
+  icon: 'lock-combination',
+  title: '权限测试页',
+  name: 'accesstest',
+  access: 0,
+  component: Main,
+  children: [{
+    path: 'index',
+    title: '权限测试页',
+    name: 'accesstest_index',
+    access: 0,
+    component: resolve => {
+      require(['pages/access/access-test'], resolve);
     }
   }]
 }];

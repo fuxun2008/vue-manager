@@ -5,35 +5,39 @@
 <template>
   <div class="login" @keydown.enter="handleSubmit">
     <div class="login-con">
-      <el-card>
+      <Card>
         <p slot="header" class="login-header">
-          <i class="ivu-icon ivu-icon-log-in icon-login"></i>欢迎登录
+          <Icon type="log-in"></Icon>欢迎登录
         </p>
         <div class="form-con">
-          <el-form ref="loginForm" :model="form" :rules="rules">
-            <el-form-item prop="userName">
-              <el-input
+          <Form ref="loginForm" :model="form" :rules="rules">
+            <FormItem prop="userName">
+              <Input
                 type="text"
                 placeholder="请输入用户名"
                 v-model="form.userName">
-                <span slot="prepend" class="ivu-icon ivu-icon-person"></span>
-              </el-input>
-            </el-form-item>
-            <el-form-item prop="password">
-              <el-input
+                <span slot="prepend">
+                  <Icon :size="16" type="person"></Icon>
+                </span>
+              </Input>
+            </FormItem>
+            <FormItem prop="password">
+              <Input
                 type="password"
                 placeholder="请输入密码"
                 v-model="form.password">
-                <span slot="prepend" class="ivu-icon ivu-icon-locked"></span>
-              </el-input>
-            </el-form-item>
-            <el-form-item>
-              <el-button @click="handleSubmit" type="primary" class="login-btn">登 录</el-button>
-            </el-form-item>
-          </el-form>
+                <span slot="prepend">
+                  <Icon :size="14" type="locked"></Icon>
+                </span>
+              </Input>
+            </FormItem>
+            <FormItem>
+              <Button @click="handleSubmit" type="primary" class="login-btn">登 录</Button>
+            </FormItem>
+          </Form>
           <p class="login-tip">输入任意用户名和密码即可</p>
         </div>
-      </el-card>
+      </Card>
     </div>
   </div>
 </template>

@@ -1,8 +1,8 @@
 <template>
   <div @click="lockScreen" class="lock-screen-btn-con">
-    <el-tooltip content="锁屏" placement="bottom">
-      <i class="ivu-icon ivu-icon-locked"></i>
-    </el-tooltip>
+    <Tooltip content="锁屏" placement="bottom">
+      <Icon type="locked" :size="20"></Icon>
+    </Tooltip>
   </div>
 </template>
 

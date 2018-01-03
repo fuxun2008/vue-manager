@@ -3,7 +3,7 @@
 </style>
 <template>
   <div class="main" :class="{'main-hide-text': shrink}">
-    <div class="sidebar-menu-con" :style="{width: shrink?'60px':'200px', overflow: shrink ? 'visible' : 'auto'}">
+    <div class="sidebar-menu-con" :style="{ width:  shrink ? '60px' : '200px', overflow: shrink ? 'visible' : 'auto' }">
       <shrinkable-menu
         :shrink="shrink"
         @on-change="handleSubmenuChange"
@@ -20,37 +20,37 @@
     <div class="main-header-con" :style="{paddingLeft: shrink ? '60px' : '200px'}">
       <div class="main-header">
         <div class="navicon-con">
-          <el-button :style="{transform: 'rotateZ(' + (this.shrink ? '-90' : '0') + 'deg)'}" type="text" @click="toggleClick"><i class="ivu-icon ivu-icon-navicon"></i></el-button>
+          <Button :style="{transform: 'rotateZ(' + (this.shrink ? '-90' : '0') + 'deg)'}" type="text" @click="toggleClick"><Icon type="navicon" size="32"></Icon></Button>
         </div>
         <div class="header-middle-con">
           <div class="main-breadcrumb">
-<!--             <breadcrumb-nav :currentPath="currentPath"></breadcrumb-nav> -->
+            <bread-crumb-nav :currentPath="currentPath"></bread-crumb-nav>
           </div>
         </div>
         <div class="header-avatar-con">
-<!--           <full-screen v-model="isFullScreen" @on-change="fullScreenChange"></full-screen>
+          <full-screen v-model="isFullScreen" @on-change="fullScreenChange"></full-screen>
           <lock-screen></lock-screen>
           <message-tip v-model="mesCount"></message-tip>
-          <theme-switch></theme-switch> -->
+          <theme-switch></theme-switch>
           <div class="user-dropdown-menu-con">
-            <el-row type="flex" justify="end" align="middle" class="user-dropdown-innercon">
-              <el-dropdown transfer trigger="click" @on-click="handleClickUserDropdown">
+            <Row type="flex" justify="end" align="middle" class="user-dropdown-innercon">
+              <Dropdown transfer trigger="click" @on-click="handleClickUserDropdown">
                 <a href="javascript:void(0)">
                   <span class="main-user-name">{{ userName }}</span>
                   <i class="ivu-icon ivu-icon-arrow-down-b"></i>
                 </a>
-                <el-dropdown-menu slot="list">
-                  <el-dropdown-item name="ownSpace">个人中心</el-dropdown-item>
-                  <el-dropdown-item name="loginout" divided>退出登录</el-dropdown-item>
-                </el-dropdown-menu>
-              </el-dropdown>
-              <img :src="avatarPath" style="background: #619fe7;margin-left: 10px;" />
-            </el-row>
+                <DropdownMenu slot="list">
+                  <DropdownItem name="ownSpace">个人中心</DropdownItem>
+                  <DropdownItem name="loginout" divided>退出登录</DropdownItem>
+                </DropdownMenu>
+              </Dropdown>
+              <Avatar :src="avatarPath" style="background: #619fe7;margin-left: 10px;"></Avatar>
+            </Row>
           </div>
         </div>
       </div>
       <div class="tags-con">
-        <!-- <tags-page-opened :pageTagsList="pageTagsList"></tags-page-opened> -->
+        <tags-page-opened :pageTagsList="pageTagsList"></tags-page-opened>
       </div>
     </div>
     <div class="single-page-con" :style="{left: shrink?'60px':'200px'}">
@@ -64,27 +64,26 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex';
+import { mapMutations, mapActions } from 'vuex';
 import Cookies from 'js-cookie';
 import util from 'util/util';
 import shrinkableMenu from 'components/menu/menu';
-
-// import tagsPageOpened from 'components/tags-page/tags-page';
-// import breadCrumbNav from 'components/breadcrumb/breadcrumb';
-// import fullScreen from 'components/fullscreen/fullscreen';
-// import lockScreen from 'components/lockscreen/lockscreen';
-// import messageTip from 'components/message-tip/message-tip';
-// import themeSwitch from 'components/theme-switch/theme-switch';
+import tagsPageOpened from 'components/tags-page/tags-page';
+import breadCrumbNav from 'components/breadcrumb/breadcrumb';
+import fullScreen from 'components/fullscreen/fullscreen';
+import lockScreen from 'components/lockscreen/lockscreen';
+import messageTip from 'components/message-tip/message-tip';
+import themeSwitch from 'components/theme-switch/theme-switch';
 
 export default {
   components: {
-    shrinkableMenu
-    // tagsPageOpened,
-    // breadCrumbNav,
-    // fullScreen,
-    // lockScreen,
-    // messageTip,
-    // themeSwitch
+    shrinkableMenu,
+    tagsPageOpened,
+    breadCrumbNav,
+    fullScreen,
+    lockScreen,
+    messageTip,
+    themeSwitch
   },
   data() {
     return {
@@ -198,14 +197,17 @@ export default {
       console.log(isFullScreen);
     },
     ...mapMutations({
-      setOpenedList: 'SET_OPENED_LIST',
+      // setOpenedList: 'SET_OPENED_LIST',
       setCurrentPageName: 'SET_CURRENT_PAGE_NAME',
       addOpenSubmenu: 'ADD_OPEN_SUBMENU',
       updateMenuList: 'UPDATE_MENU_LIST',
       setMessageCount: 'SET_MESSAGE_COUNT',
       clearOpenedSubmenu: 'CLEAR_OPENED_SUBMENU',
       logout: 'LOGOUT'
-    })
+    }),
+    ...mapActions([
+      'setOpenedList'
+    ])
   }
 };
 </script>

@@ -1,6 +1,6 @@
 export const SET_AVATAR = 'SET_AVATAR';
 
-export const SET_OPENED_LIST = 'SET_OPENED_LIST';
+// export const SET_OPENED_LIST = 'SET_OPENED_LIST';
 
 export const PAGE_OPENED_LIST = 'PAGE_OPENED_LIST';
 

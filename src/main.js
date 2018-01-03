@@ -1,11 +1,14 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
-import Element from 'element-ui';
+// import Element from 'element-ui';
+import iView from 'iview';
+import {mapMutations, mapActions} from 'vuex';
 import 'es6-promise/auto';
 import 'assets/js/polyfill';
 import 'assets/css/index.scss';
-import 'theme/index.css';
+// import 'theme/index.css';
+import 'iview/dist/styles/iview.css';
 
 import App from './App';
 import router from './router/index';
@@ -14,7 +17,8 @@ import store from './store';
 import * as filters from './filters';
 import * as types from './store/mutation-types';
 
-Vue.use(Element);
+// Vue.use(Element);
+Vue.use(iView);
 
 Vue.config.productionTip = false;
 Vue.config.devtools = process.env.DEBUG_MODE;
@@ -36,8 +40,8 @@ Vue.directive('focus', {
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  router: router,
-  store: store,
+  router,
+  store,
   render: h => h(App),
   data: {
     currentPageName: ''
@@ -45,7 +49,8 @@ new Vue({
   mounted() {
     this.currentPageName = this.$route.name;
     // 显示打开的页面的列表
-    this.$store.commit(types.SET_OPENED_LIST);
+    // this.$store.commit(types.SET_OPENED_LIST);
+    this.setOpenedList();
     this.$store.commit(types.INIT_CACHE_PAGE);
     // 权限菜单过滤相关
     this.$store.commit(types.UPDATE_MENU_LIST);
@@ -63,5 +68,10 @@ new Vue({
       return true;
     });
     this.$store.commit(types.SET_TAGS_LIST, tagsList);
+  },
+  methods: {
+    ...mapActions([
+      'setOpenedList'
+    ])
   }
 });

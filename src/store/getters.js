@@ -1,3 +1,3 @@
-export const playHistory = state => state.playHistory;
+export const lang = state => state.lang;
 
-export const favoriteList = state => state.favoriteList;
+export const cachePage = state => state.cachePage;

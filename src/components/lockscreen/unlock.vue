@@ -7,7 +7,7 @@
       <div @click="handleClickAvator" class="unlock-avatar-con" :style="{marginLeft: avatarLeft}">
         <img class="unlock-avatar-img" :src="avatarPath">
         <div class="unlock-avatar-cover">
-          <span><i class="ivu-icon ivu-icon-unlocked"></i></span>
+          <span><Icon type="unlocked" :size="30"></Icon></span>
           <p>解锁</p>
         </div>
       </div>

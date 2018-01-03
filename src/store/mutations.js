@@ -8,10 +8,7 @@ import * as types from './mutation-types';
 
 const mutations = {
   [types.SET_AVATAR](state, path) {
-    localStorage.avatorImgPath = path;
-  },
-  [types.SET_OPENED_LIST](state) {
-    state.pageOpenedList = localStorage.pageOpenedList ? JSON.parse(localStorage.pageOpenedList) : [otherRouter.children[0]];
+    localStorage.avatarImgPath = path;
   },
   [types.PAGE_OPENED_LIST](state, get) {
     const openedPage = state.pageOpenedList[get.index];
